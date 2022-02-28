@@ -4,17 +4,19 @@ import { DataGrid } from "@mui/x-data-grid";
 function checkBox() {
   return <input type="checkbox" />;
 }
-const Header = (item)=>{
-    
+const header = (params)=>{
+    console.log(params)
+    return(
+        <div >Profile 1</div>
+
+    )
 
 }
 const columns = [
   { field: "user", headerName: "Users", width: 90, editable: true, },
   {
     field: "profine1",
-    renderHeader: () => (
-        <div>Profile 2</div>
-      ),
+    renderHeader: (params) => header(params),
     // headerName: "Profile 1",
     width: 150,
    
@@ -79,15 +81,15 @@ const rows = [
 export default function Profile() {
  const [profiles, setProfiles] = useState()
  const [headers, setHeaders] = useState()
+ const [stateRename, setStateRename] = useState([]);
  const ref= useRef()
 //  useEffect(()=>{
 //  profiles.map((el, i)=>{
+//     setStateRename([...stateRename, 0])
 //      const header = {
 //             field: i,
-//             renderHeader: () => (
-//                 <div ref={ref}> {el}</div>
-//               ),
-//             headerName: "Profile 1",
+//             renderHeader: (params) => header(params, el, stateRename[i]),
+          
 //             width: 150,
            
 //             sortable: false,
