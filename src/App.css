@@ -1,7 +1,56 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+.wrapper {
   text-align: center;
+  background: #F5F5F5;
+  padding: 35px 0;
+  min-height: calc(100vh - 80px);
 }
 
+.container{
+  max-width: 1272px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+.logoGroup{
+  display: flex;
+  /* margin-bottom: 76px;  */
+  justify-content: center; 
+  align-items: center;
+
+}
+.logoGroup__img{
+  margin-right: 15px;
+}
+.logoGroup__header, input{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+}
+input{
+  font-weight: 400;
+  font-size: 14px;
+  padding: 10px
+}
+.button{
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 36px;
+  padding: 10px 25px;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

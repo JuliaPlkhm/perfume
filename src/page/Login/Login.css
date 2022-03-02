@@ -1,0 +1,48 @@
+.loginWrapper{
+    height: 100vh;
+}
+
+.form{
+    max-width: 600px; 
+    background: #FFFFFF;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    padding: 39px 87px 59px; 
+    margin: 0 auto;
+}
+.form__header{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 34px;
+}
+.form__group{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.form__label{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 11px;
+
+}
+.login__header{
+    margin-bottom: 45px;
+}
+.form__input{
+    height: 36px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin-bottom: 45px;
+
+}
+.form__button{
+    min-width: 166px;
+}
