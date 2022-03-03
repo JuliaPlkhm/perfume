@@ -1,16 +1,14 @@
 import React, {useState, useEffect, useRef} from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { Paper } from "@mui/material";
 
 const CssTextField = styled(Autocomplete)({
 
     '& .MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1n7mdqy-MuiAutocomplete-root .MuiOutlinedInput-root': {
         paddingRight: '0px',
-
-
-
     },
 
     '& .MuiOutlinedInput-root': {
@@ -26,6 +24,13 @@ const CssTextField = styled(Autocomplete)({
     },
   });
 
+  const CustomPaper = (props) => {
+    return <Paper style={{fontSize: '14px',  fontFamily: 'Roboto',
+    
+    fontWeight: '400',}} {...props} />;
+  };
+
+
 const columns = [
   { field: "lastName", headerName: "Last Name",  editable: true, flex: 1,     sortable: false,},
   { field: "firstName", headerName: "First Name",  editable: true, flex: 1,    sortable: false,},
@@ -39,10 +44,11 @@ const columns = [
     return (
       <CssTextField
       clearIcon
-        options={["Susan", "Mark"]}
+        options={["admin", "salesman", "manager"]}
         // getOptionSelected={(option, value) => option.value === value.value}
         defaultValue={params1.getValue(params1.id, "profile")}
         // getOptionLabel={(option) => option}
+        PaperComponent={CustomPaper}
         sx={{width:'100%', padding:'0px' }}
         renderInput={(params) => <TextField {...params} variant="outlined" />}
       />
@@ -137,20 +143,20 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   
     
     '& .MuiDataGrid-row': {
-        padding: "0px 40px",
+        // padding: "0px 20px",
         borderBottom:'1px solid #F5F5F5'
       },
-      '& .MuiDataGrid-columnHeader': {
+      '& .MuiDataGrid-columnHeaderTitleContainer': {
         padding: "0px 0px",
       },
-      '& .MuiDataGrid-columnHeader:focus, .MuiDataGrid-cell:focus, .MuiDataGrid-cell.MuiDataGrid-cell--editing:focus-within': {
+      '& .MuiDataGrid-columnHeader:focus, .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within, .MuiDataGrid-cell.MuiDataGrid-cell--editing:focus-within': {
         outline: 'none',
       },
-        '& .MuiInputBase-input':{
-            padding: '0 5px'
-      },
+      //   '& .MuiInputBase-input':{
+      //       padding: '0 5px'
+      // },
       '& .MuiDataGrid-columnHeaders': {
-        padding: "30px 40px",
+        padding: "30px 0px",
         maxHeight:"76px"
       },
       '& .MuiDataGrid-virtualScroller': {
@@ -165,9 +171,13 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 
       },
      
-    '& .MuiDataGrid-columnsContainer, .MuiDataGrid-cell, .MuiDataGrid-columnHeaderTitleContainer': {
-      padding: "0px 5px"
+    '&  .MuiDataGrid-cell,  .MuiDataGrid-columnHeader': {
+      padding: "0px 20px "
     },
+    '&  .MuiDataGrid-cell:first-of-type, .MuiDataGrid-columnHeader:first-of-type': {
+      paddingLeft: " 40px "
+    },
+
     '& .MuiDataGrid-cell': {
         fontFamily: 'Roboto',
         fontSize: '14px',
@@ -179,7 +189,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
    
    
   }));
-export function TableOld() {
+export function TableNew() {
  const [profiles, setProfiles] = useState()
  const [headers, setHeaders] = useState()
  const [stateRename, setStateRename] = useState([]);
@@ -211,6 +221,7 @@ export function TableOld() {
         disableColumnFilter
         disableColumnMenu
         hideFooter
+        disableSelectionOnClick
       />
     </div>
 

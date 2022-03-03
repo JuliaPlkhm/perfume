@@ -22,13 +22,6 @@ const CssTextField = styled(Autocomplete)({
           border: 0,
       },
     },
-    "& .MuiAutocomplete-listbox": {
-      border: "2px solid grey",
-      minHeight: 400,
-      color: "green",
-      fontSize: 18,
-    }
-    
   });
 
   const CustomPaper = (props) => {

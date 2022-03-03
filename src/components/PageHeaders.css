@@ -2,6 +2,7 @@
    display: flex;
    justify-content: space-between; 
    margin-bottom: 35px;
+   position: relative;
 }
 button.header__button{
     padding-left: 52px;

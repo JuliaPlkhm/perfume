@@ -1,20 +1,22 @@
 import React, {useState} from 'react';
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import './Login.css';
 import { Logo } from '../../components/Logo';
-import { setLogin } from '../../redux/actions';
+import { getUser } from '../../redux/actions/user';
+import { setUser } from '../../redux/actions/user';
+// import { setLogin } from '../../redux/actions';
 
 export  const Login = () => {
     const dispatch = useDispatch();
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const handelClick=()=>{
-        dispatch(setLogin())
-    }
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const handelClick=()=>{
+      dispatch( getUser({userName:username, password:password}))
+  }
   return (
      <div className='loginWrapper wrapper '>
          <div className='login__header'><Logo/></div>
-         <form className='login__form form'>
+         <div className='login__form form'>
              <h1 className='form__header'>Login</h1>
              <div className='form__group'>
              <label className='form__label' for="username">User Name</label>
@@ -26,8 +28,8 @@ export  const Login = () => {
              <input className='form__input' type="password" id="password"  value={password} onChange={e => setPassword(e.target.value)}/>
              </div>
 
-             <input  className='form__button button' type="submit" value="Login" onClick={handelClick}/>
-         </form>
+             <button  className='form__button button'  onClick={handelClick}>Login</button>
+         </div>
      </div>
   );
 }

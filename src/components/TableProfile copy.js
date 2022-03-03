@@ -25,128 +25,156 @@ function checkBox(params) {
       </div>
     )}
 
-  const columns = [
-  { field: "lastName", headerName: "",  editable: true, flex: 1, sortable: false,  align:  'center' },
-    { field: "firstName", headerName: "Page 1", editable: true, flex: 1, sortable: false, renderHeader: (params) => header(params),
-        renderCell: (params) => checkBox(params)
-    },
-  {
-    field: "profine",
-    headerName: "Page 2",
-    sortable: false,
-    flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field1",
-    headerName: "Page 3",
-    sortable: false,
-     flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field2",
-    headerName: "Page 4",
-    sortable: false,
-     flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field3",
-    headerName: "Page 5",
-    sortable: false,
-     flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field4",
-    headerName: "Page 5",
-    sortable: false,
-     flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field5",
-    headerName: "Page 5",
-    sortable: false,
-  
-     flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field6",
-    headerName: "Page 5",
-    sortable: false,
-     flex: 1,
-    renderCell: (params) => checkBox(params),
-    renderHeader: (params) => header(params)
-  },
-  {
-    field: "field7",
-    headerName: "",
-    sortable: false,
-     flex: 0.35,
-    align:  'center' ,
-   
-    renderCell: (params) => deleteRow(params),
-   
-  },
-];
-
-const rows = [
-  {
-    id: 1,
-    lastName: "Trent",
-    firstName: "Donald",
-    profile: "manager",
-    field1:'lorem',
-    field2:'lorem',
-    field3:'lorem'
-  },
-  {
-    id: 2,
-    lastName: "Trent",
-    firstName: "Donald",
-    profile: "manager",
-    field1:'lorem',
-    field2:'lorem',
-    field3:'lorem'
+    const columns = [
+      { field: "lastName", minWidth: 180, headerName: "", cellClassName: 'stickyCell' , editable: true,  sortable: false,  align:  'center' },
+        { field: "firstName", minWidth: 180, headerName: "Page 1", editable: true,  sortable: false, renderHeader: (params) => header(params),
+            renderCell: (params) => checkBox(params)
+        },
+      {
+        field: "profine",
+        headerName: "Page 2",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field1",
+        headerName: "Page 3",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field2",
+        headerName: "Page 4",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field3",
+        headerName: "Page 5",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field4",
+        headerName: "Page 5",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field5",
+        headerName: "Page 5",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field6",
+        headerName: "Page 5",
+        sortable: false,
+        minWidth: 180,
+        renderCell: (params) => checkBox(params),
+        renderHeader: (params) => header(params)
+      },
+      {
+        field: "field7",
+        headerName: "",
+        sortable: false,
+        align:  'center' ,
+        minWidth: 180,
+        renderCell: (params) => deleteRow(params),
+       
+      },
+    ];
     
-  },{
-    id: 3,
-    lastName: "Trent",
-    firstName: "Donald",
-    profile: "manager",
-    field1:'lorem',
-    field2:'lorem',
-    field3:'lorem'
-    
-  },{
-    id: 4,
-    lastName: "Trent",
-    firstName: "Donald",
-    profile: "manager",
-    field1:'lorem',
-    field2:'lorem',
-    field3:'lorem',
-    
-  },{
-    id: 5,
-    lastName: "Trent",
-    firstName: "Donald",
-    profile: "manager",
-    field1:'lorem',
-    field2:'lorem',
-    field3:'lorem'
-    
-  },
-];
+    const rows = [
+      {
+        id: 1,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+      },
+      {
+        id: 2,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+        
+      },{
+        id: 3,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+        
+      },{
+        id: 4,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem',
+        
+      },{
+        id: 5,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+        
+      },
+      {
+        id: 6,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+        
+      },
+      {
+        id: 7,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+        
+      },
+      {
+        id: 8,
+        lastName: "Admin",
+        firstName: "Donald",
+        profile: "manager",
+        field1:'lorem',
+        field2:'lorem',
+        field3:'lorem'
+        
+      },
+    ];
 
 const ROW_HEIGHT = 84;
 const ROW_MARGIN = 14;
@@ -154,7 +182,7 @@ const containerHeight = (rows.length + 1) * (ROW_HEIGHT + ROW_MARGIN);
 
 const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
       border: 0,
-  
+      height: '400px',
       color:
         theme.palette.mode === 'light' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.85)',
       fontFamily: [
@@ -171,7 +199,9 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
         display: 'none',
       },
     
-      
+      '& .MuiDataGrid-main': {
+        overflow: "visible"
+    },
       '& .MuiDataGrid-row': {
           // padding: "0px 40px",
           backgroundColor: '#FFFFFF',
@@ -202,9 +232,18 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
           maxHeight: "76px",
           margin: "0 auto",
           width: "calc(100% - 3px) !important",
+          position: "sticky",
+          zIndex: theme.zIndex.mobileStepper - 1,
+          background: '#F5F5F5'
+         
+        },
+        '& .stickyCell': {
+         
+          position: "sticky !important",
+          zIndex: theme.zIndex.mobileStepper - 1,
         },
         '& .MuiDataGrid-virtualScroller': {
-          marginTop: "76px !IMPORTANT",
+          marginTop: "10px !IMPORTANT",
           
         },
         '& .MuiDataGrid-columnHeaderTitle': {
@@ -243,19 +282,22 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 
 export function DataGridNew() {
   return (
-    // <div style={{ width: "100%" }}>
+    // <div style={{ width: "100%", height: '800px' }}>
+
       <StyledDataGrid
         rows={rows}
         columns={columns}
         rowHeight={84}
        headerHeight={76}
-
+        // sx={{height: '600px'}}
         // autoHeight
         disableColumnFilter
         disableColumnMenu
         hideFooter
+        scrollbarSize={2}
         disableSelectionOnClick
       />
-    // </div>
+    //  </div> 
   );
 }
+

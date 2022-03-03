@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Header } from '../../components/PageHeaders';
 import { Table } from '../../components/Table copy';
+import { TableNew } from '../../components/Table';
 
 export  const Users = () => {
     const [username, setUsername] = useState('')
@@ -9,9 +10,8 @@ export  const Users = () => {
      <div className='wrapper users'>
          <div className='container'>
          <Header name={'Users'} button={'Add New'}/>
-         <Table></Table>
+         <TableNew ></TableNew >
          </div>
-         
 
      </div>
   );
