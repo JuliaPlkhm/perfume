@@ -1,17 +1,23 @@
-import { SET_USERS } from "../types/index"
+import { SET_USERS, ADD_USER, DELETE_USER} from "../types/index"
 const initialState = {
   users: null,
   };
   
-  const loginReducer = (state = initialState, { type, payload }) => {
-    switch (type) {
-      
-        case SET_USERS:
-          return { ...state, userName: payload };
-           
-      default:
-        return state;
-    }
-  };
+const usersReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+
+    case SET_USERS:
+      // debugger
+      return { ...state, users: payload };
+
+      case ADD_USER:
+        // debugger
+        return { ...state, users: [...state.users, payload]};
   
-  export default usersReducer;
+   
+    default:
+      return state;
+  }
+};
+
+export default usersReducer;

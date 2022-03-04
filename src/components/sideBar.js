@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
-import icon from '../assets/close.png'
-import './sideBar.css';
+import {  useDispatch } from "react-redux";
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 
+import icon from '../assets/close.png'
+import './sideBar.css';
+import { postUser } from '../redux/actions/users';
 
 export  const SideBar = ({isOpen, setOpen }) => {
+  const dispatch = useDispatch();
+
     const [lastName, setLastName] = useState('')
     const [firstName, setFirstName] = useState('')
     const [profile, setProfile] = useState('')
@@ -13,10 +17,31 @@ export  const SideBar = ({isOpen, setOpen }) => {
     const [field2, setField2] = useState('')
     const [field3, setField3] = useState('')
 
+    const deleteState=()=>{
+      setLastName()
+      setFirstName()
+      setProfile()
+      setField1()
+      setField2()
+      setField3()
+    }
+
     const handelClick=()=>{
+      const user ={
+        firstName: firstName,
+        lastName: lastName,
+        userName: firstName,
+        password: "string",
+        roleName: profile
+      }
+      dispatch(postUser(user))
+      deleteState()
+     
     }
     const handleClose = () =>{
         setOpen(false);
+      deleteState()
+
       }
 
   return (
@@ -64,7 +89,7 @@ export  const SideBar = ({isOpen, setOpen }) => {
              <input className='sideBar__input form__input input' type="text" id="field3"  value={field3} onChange={e => setField3(e.target.value)}/>
              </div>
             <div className='sideBar__buttons'>
-             <button  className='form__button button'>Save</button>
+             <button  className='form__button button' onClick={handelClick}>Save</button>
              <button  className='form__button button' onClick={handleClose}>Cansel</button>
             </div>
            

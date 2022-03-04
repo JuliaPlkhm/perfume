@@ -2,16 +2,16 @@ import React, {useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import './Login.css';
 import { Logo } from '../../components/Logo';
-import { getUser } from '../../redux/actions/user';
-import { setUser } from '../../redux/actions/user';
-// import { setLogin } from '../../redux/actions';
+// import { getUser } from '../../redux/actions/user';
+// import { setUser } from '../../redux/actions/user';
+import { setLogin } from '../../redux/actions';
 
 export  const Login = () => {
     const dispatch = useDispatch();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const handelClick=()=>{
-      dispatch( getUser({userName:username, password:password}))
+      dispatch( setLogin ({userName:username, password:password}))
   }
   return (
      <div className='loginWrapper wrapper '>
