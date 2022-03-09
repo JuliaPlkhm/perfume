@@ -46,7 +46,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
         width: "calc(100% - 3px) !important",
 
         },
-        '& .MuiDataGrid-row:hover .gridIcon': {
+        '& .MuiDataGrid-row:hover .profile__gridIcon': {
           opacity:'0.5'
         },
     

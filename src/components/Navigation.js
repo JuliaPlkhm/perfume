@@ -83,7 +83,7 @@ export const Nav = () => {
                     </AntTabs>
                 </div>
 
-                <p className='nav__menu'>Usermame</p>
+                <p className='nav__menu'>Username</p>
             </nav>
         </div>
 

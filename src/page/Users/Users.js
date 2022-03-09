@@ -28,10 +28,10 @@ export  const Users = () => {
         id: el.id,
         lastName: el.lastName,
         firstName: el.firstName,
+        userName: el.userName,
         profile: el.role.name,
         field1: 'lorem',
-        field2: 'lorem',
-        field3: 'lorem'
+        field2: 'lorem'
       }
       setRow((row) => [...row, rowItem])
       setColumns(() => getColumns(option))

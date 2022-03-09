@@ -90,6 +90,7 @@ export function TableNew(props) {
     id: e.row.id,
     firstName: e.row.firstName,
     lastName: e.row.lastName,
+    userName: e.row.userName,
     roleName:  e.row.profile
   }
 
