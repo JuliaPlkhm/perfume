@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import './Login.css';
 import { Logo } from '../../components/Logo';
-// import { getUser } from '../../redux/actions/user';
-// import { setUser } from '../../redux/actions/user';
 import { setLogin } from '../../redux/actions';
 
 export  const Login = () => {

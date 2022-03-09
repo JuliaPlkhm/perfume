@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import {  useDispatch } from "react-redux";
 
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-
+import { postRole } from '../redux/actions/roles';
 import icon from '../assets/close.png'
 
 const style = {
@@ -18,7 +19,17 @@ const style = {
 };
 
 export const ModalBlock = ({isOpen, setOpen }) => {
+  const dispatch = useDispatch();
+
+
   const [profileName, setProfileName] = useState('');
+
+  const handelClick=()=>{
+    dispatch(postRole({name: profileName}))
+    setProfileName('')
+    setOpen(false);
+   
+  }
 
   const handleClose = () =>{
     setOpen(false);
@@ -45,7 +56,7 @@ export const ModalBlock = ({isOpen, setOpen }) => {
              </div>
              
             
-             <button  className='form__button button'>Save</button>
+             <button  className='form__button button' onClick={handelClick}>Save</button>
              <button  className='form__button button' onClick={handleClose}>Cansel</button>
 
           </div>

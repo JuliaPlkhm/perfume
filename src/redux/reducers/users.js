@@ -7,11 +7,9 @@ const usersReducer = (state = initialState, { type, payload }) => {
   switch (type) {
 
     case SET_USERS:
-      // debugger
       return { ...state, users: payload };
 
       case ADD_USER:
-        // debugger
         return { ...state, users: [...state.users, payload]};
   
    

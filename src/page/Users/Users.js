@@ -1,16 +1,15 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import { Header } from '../../components/PageHeaders';
-import { Table } from '../../components/Table copy';
-import { TableNew } from '../../components/Table';
+import { TableNew } from '../../components/Tables/Table';
 import { getUsers } from '../../redux/actions/users';
 import { getRoles } from '../../redux/actions/roles';
-import { RouterSharp } from '@mui/icons-material';
 import { setRolesForUser } from '../../redux/actions/rolesForUser';
+import getColumns from '../../components/Tables/getColumnsUser'
+
 
 export  const Users = () => {
-  // debugger
   const dispatch = useDispatch();
   const { users} = useSelector((state) => state.users);
   const { roles} = useSelector((state) => state.roles);
@@ -18,45 +17,55 @@ export  const Users = () => {
   const [option, setOption] = useState([])
 
  
-  
-  const getOptions=()=>{
-  //  setOption(()=>[])
-    roles?.map((el)=> setOption((options) => [...options, {label: el.name, id: el.id}]))
+  const [row, setRow] = useState([])
+  const [columns, setColumns] = useState([])
+
+  useEffect(() => {
+    setRow([])
+    users?.map((el) => {
+
+      const rowItem = {
+        id: el.id,
+        lastName: el.lastName,
+        firstName: el.firstName,
+        profile: el.role.name,
+        field1: 'lorem',
+        field2: 'lorem',
+        field3: 'lorem'
+      }
+      setRow((row) => [...row, rowItem])
+      setColumns(() => getColumns(option))
+    })
+  }, [users, option])
+
+
+  const getOptions = () => {
+    setOption(() => [])
+    roles?.map((el) => setOption((options) => [...options, { label: el.name, id: el.id }]))
   }
-  const getDeviceDataTotal = useCallback(() => { 
+
+  useEffect(() => {
     dispatch(getUsers());
     dispatch(getRoles());
-    getOptions()
-},[])
-  useEffect(()=>{
-    dispatch(getUsers());
-    dispatch(getRoles());
-    getOptions()
-},[])
- 
+  }, [])
 
-
-  useEffect(()=>{
-    if(roles){
+  useEffect(() => {
+    if (roles) {
       getOptions()
     }
-  },[roles]) 
+  }, [roles])
 
-  useEffect(()=>{
-    if(option.length){
-      // debugger
+  useEffect(() => {
+    if (option.length) {
       dispatch(setRolesForUser(option))
-
-      console.log(option)
-
     }
-  },[option])
-  
+  }, [option])
+
   return (
      <div className='wrapper users'>
          <div className='container'>
          <Header name={'Users'} button={'Add New'}/>
-         {users && option && <TableNew users={users} option={rolesForUsers}></TableNew >}
+         {users && option && <TableNew  row={row} columns = {columns} option={rolesForUsers} type='users'></TableNew >}
          </div>
 
      </div>

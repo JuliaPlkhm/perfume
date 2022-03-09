@@ -28,7 +28,7 @@ export const deleteUser = (id) => {
 
   return (dispatch) => {
     axios.delete(`https://localhost:5001/users/${id}`, id, {withCredentials: true}).then((res) => {
-      dispatch(getUsers(res.data));
+      dispatch(getUsers());
     });
   };
 };
@@ -36,7 +36,7 @@ export const changeUser = (user) => {
 
   return (dispatch) => {
     axios.put(`https://localhost:5001/users/`, user, {withCredentials: true}).then((res) => {
-      dispatch(getUsers(res.data));
+      dispatch(getUsers());
     });
   };
 };
@@ -44,24 +44,6 @@ export const changeUser = (user) => {
 
 export const getUsers = () => {
   return (dispatch) => {
-    // debugger
-    // fetch("https://reqres.in/api/users/",
-    // {
-    //   method: 'GET', // *GET, POST, PUT, DELETE, etc.
-    //   mode: 'cors', // no-cors, *cors, same-origin
-     
-    //   credentials: 'include', // include, *same-origin, omit
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-   
-    // }
-    // ).then(async (res) => {
-    //     const json = await res.json();
-    //     console.log(json);
-    //     dispatch(setUsers(res.data));
-    //   })
     axios.get(`https://localhost:5001/users/`, {withCredentials: true}).then((res) => {
       dispatch(setUsers(res.data));
     });
