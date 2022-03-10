@@ -4,7 +4,6 @@ import * as types from "../types/index";
 import { setError } from "./error";
 
 export const setLogged = (isLogged) => {
-
   return {
     type: types.SET_LOGIN,
     payload: isLogged,
@@ -24,9 +23,12 @@ export const setUser = (user) => {
 export const setLogin = (user) => {
   return (dispatch) => {
     axios.post(`https://localhost:5001/Auth/login`, user, {withCredentials: true}).then((res) => {
-            dispatch(setLogged(true))
-            dispatch(setUser(res.data));
-          }).catch(err=>dispatch(setError(err.response)));
+      
+
+      dispatch(setUser(res.data));
+      dispatch(setLogged(true))
+           
+           }).catch(err=>dispatch(setError(err.response)));
         };
  
 };
@@ -34,6 +36,7 @@ export const setLogin = (user) => {
 export const logout = () => {
   return (dispatch) => {
     axios.delete(`https://localhost:5001/Auth/login`, {withCredentials: true}).then((res) => {
+      dispatch(setUser(null));
       dispatch(setLogged(false))
           
           }).catch(err=>dispatch(setError(err.response.data)));

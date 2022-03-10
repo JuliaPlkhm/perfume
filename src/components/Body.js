@@ -8,12 +8,15 @@ import { Users } from "../page/Users/Users";
 import { Main } from '../page/mainPage';
 import PublicRoute from './PublicRoute'
 import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRouteForUsers from "./ProtectedRouteForUsers";
 import { checkLogged } from "../redux/actions/user";
 import { useSelector, useDispatch } from "react-redux";
 
 
 export function Body() {
     const { loggedIn } = useSelector((state) => state.user);
+    const  {user} = useSelector((state) => state.user);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,27 +31,27 @@ export function Body() {
 
                 {/* {loggedIn && <Nav />} */}
                 <Routes>
-                    <Route path="/" element={<ProtectedRoute loggedIn={loggedIn} />}>
+                    <Route path="/" element={<ProtectedRoute loggedIn={loggedIn} role={user?.role.name} />}>
                         <Route path="" element={<Navigate to="/users" />} />
                     </Route>
 
-                    <Route path="/users" element={<ProtectedRoute loggedIn={loggedIn} />}>
+                    <Route path="/users" element={<ProtectedRoute loggedIn={loggedIn} role={user?.role.name} />}>
                         <Route path="" element={<Users />} />
                     </Route>
 
-                    <Route path="/profiles" element={<ProtectedRoute loggedIn={loggedIn} />}>
+                    <Route path="/profiles" element={<ProtectedRoute loggedIn={loggedIn} role={user?.role.name}  />}>
                         <Route path="" element={<Profile />} />
                     </Route>
 
-                    <Route path="/admin" element={<ProtectedRoute loggedIn={loggedIn} />}>
+                    <Route path="/admin" element={<ProtectedRoute loggedIn={loggedIn} role={user?.role.name}  />}>
                         <Route path="" element={<Admin />} />
                     </Route>
-                    <Route path="/main" element={<ProtectedRoute loggedIn={loggedIn} />}>
-                        <Route path="" element={<Main />} />
+                    <Route path="/" element={<ProtectedRouteForUsers loggedIn={loggedIn} role={user?.role.name} />}>
+                        <Route path="main" element={<Main />} />
                     </Route>
 
 
-                    <Route path="/" element={<PublicRoute loggedIn={loggedIn} />}>
+                    <Route path="/" element={<PublicRoute loggedIn={loggedIn} role={user?.role.name}/>}>
                         <Route path="/login" element={<Login />} />
                     </Route>
                 </Routes>

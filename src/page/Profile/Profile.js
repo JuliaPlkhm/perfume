@@ -18,6 +18,7 @@ export  const Profile = () => {
   const [columns, setColumns] = useState([])
 
   const handleDelete =(id)=>(params)=>{
+    
     console.log(id)
       dispatch(deleteRole(id))
   }
