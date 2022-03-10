@@ -17,6 +17,9 @@ export const GET_USERS = "GET_USERS";
 export const SET_ROLES = "SET_ROLES";
 export const SET_PAGES = "SET_PAGES";
 
+export const SET_ERROR = "SET_ERROR";
+
+
 
 
 

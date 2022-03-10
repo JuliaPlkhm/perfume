@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, {useState} from 'react';
+import { Link, useLocation } from "react-router-dom";
 import './Navigation.css';
+import { useSelector, useDispatch } from "react-redux";
 
-import { styled } from "@mui/material/styles";
-
+import { styled } from '@mui/material/styles';
+import {  MenuNav } from './menu';
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -12,20 +13,9 @@ import { Logo } from './Logo';
 import users from '../assets/users.png'
 import profile from '../assets/profile.png'
 import admin from '../assets/admin.png'
+import { logout } from '../redux/actions/user';
 
 
-function LinkTab(props) {
-    return (
-      <Tab
-        disableRipple
-        component="a"
-        onClick={(event) => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
   
   const AntTabs = styled(Tabs)({
       "& .MuiTab-root":{
@@ -39,7 +29,7 @@ function LinkTab(props) {
     "& .MuiTabs-scroller, .MuiBoxs-root ": {
       overflow: "visible !important"
     },
-      "& .MuiButtonBase-root, MuiTab-root.Mui-selected ": {
+      "& .MuiButtonBase-root, MuiTab-root.Mui-selected, .MuiButton-root, .MuiButton-text ": {
           fontFamily: 'Roboto',
           fontStyle: 'normal',
           fontWeight: 'normal',
@@ -54,38 +44,42 @@ function LinkTab(props) {
 
   });
 
-
-
 export const Nav = () => {
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const handleLogout = () => () => {
+    dispatch(logout())
+  }
+  const location = useLocation();
 
-    const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(location.pathname === '/login' ? '/users': location.pathname);
 
-    const handleChange = (event, newValue) => {
-      setValue(newValue);
-    };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
-    return (
-        <div className='nav'>
-            <nav className='nav__container container'>
-                <Logo />
-                <div>
-                    <AntTabs
-                        sx={{ overflow: "visible !important", minHeight: '0px' }}
-                        value={value}
-                        onChange={handleChange}
-                        aria-label="nav tabs"
-                    >
-                        <Tab icon={<img src={users} />} iconPosition="start" label={<h4>Users</h4>} to='/users' component={Link} disableRipple />
+  return (
+    <div className='nav'>
+      <nav className='nav__container container'>
+        <Logo />
+        <div>
+          <AntTabs
+            sx={{ overflow: "visible !important", minHeight: '0px' }}
+            value={value}
+            onChange={handleChange}
+            aria-label="nav tabs"
+          >
+            <Tab value="/users" icon={<img src={users} />} iconPosition="start" label={<h4>Users</h4>} to='/users' component={Link} disableRipple />
 
-                        <Tab icon={<img src={profile} />} iconPosition="start" label={<h4>Profile</h4>} to='/profiles' component={Link} disableRipple />
+            <Tab value="/profiles" icon={<img src={profile} />} iconPosition="start" label={<h4>Profile</h4>} to='/profiles' component={Link} disableRipple />
 
-                        <Tab icon={<img src={admin} />} iconPosition="start" label={<h4>Admin users</h4>} to='/admin' component={Link} disableRipple />
-                    </AntTabs>
-                </div>
-
-                <p className='nav__menu'>Username</p>
-            </nav>
+            <Tab value="/admin" icon={<img src={admin} />} iconPosition="start" label={<h4>Admin users</h4>} to='/admin' component={Link} disableRipple />
+          </AntTabs>
         </div>
 
-    );
+        < MenuNav user={user} logout={handleLogout}></ MenuNav>
+      </nav>
+    </div>
+
+  );
 }

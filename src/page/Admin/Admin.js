@@ -4,6 +4,7 @@ import { Header } from '../../components/PageHeaders';
 import { TableNew } from '../../components/Tables/Table';
 import { getAdminUsers } from '../../redux/actions/adminUsers';
 import getColumns from '../../components/Tables/getColumnsAdmin'
+import { Nav } from '../../components/Navigation';
 
 
 export  const Admin = () => {
@@ -23,8 +24,8 @@ export  const Admin = () => {
       lastName: el.lastName,
       firstName: el.firstName,
       userName: el.userName,
-      field1:'lorem',
-      field2:'lorem'
+      password:'****',
+      field1:'lorem'
     }
     setRow((row) => [...row, rowItem])
 
@@ -38,6 +39,8 @@ export  const Admin = () => {
  
   return (
      <div className='wrapper users'>
+       <Nav/>
+
          <div className='container'>
          <Header name={'Admin Users'} button={'Add New'}/>
          <TableNew  row={row} columns = {columns} type='admin' ></TableNew >

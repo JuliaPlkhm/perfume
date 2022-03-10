@@ -26,8 +26,7 @@ const BootstrapInput = styled(InputBase)({
 
 const AutocompleteCell =(props)=>{
     const { id, api, field, row } = props.params;
-    const [value, setValue] = useState(props.params.getValue(id, "profile"));
-
+    const [value, setValue] = useState(row.profile);
     const handleChange =(event, newValue)=>{
       setValue((value)=>newValue.props.children);
       api.setCellMode(id, field, 'edit');
@@ -43,7 +42,7 @@ const AutocompleteCell =(props)=>{
       sx={{fontSize: '14px'}}
       input={<BootstrapInput />}
     >
-      {props.option.map((el)=> <MenuItem sx={{fontSize: '14px'}} value={el.label}>{el.label}</MenuItem>)}
+      {props.option.map((el)=> <MenuItem sx={{fontSize: '14px'}} key ={el.label} value={el.label}>{el.label}</MenuItem>)}
       
     </Select>
     );
@@ -71,8 +70,8 @@ export function deleteRow (params){
         flex: 1,
         renderCell: (params) => <AutocompleteCell params={params} option={option}/>
       },
-      { field: "field1", headerName: "Field 2", sortable: false, editable: true, flex: 1},
-      { field: "field2", headerName: "Field 3", sortable: false, editable: true, flex: 1},
+      { field: "password", headerName: "Password", sortable: false, editable: true, flex: 1},
+      { field: "field1", headerName: "Field 1", sortable: false, editable: true, flex: 1},
       {
         field: "delete",
         headerName: "",

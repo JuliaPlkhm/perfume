@@ -51,7 +51,7 @@ export const ModalBlock = ({isOpen, setOpen }) => {
             <img className='closeButton' onClick={handleClose} src={icon}/>
           
              <div className='form__group'>
-             <label className='form__label label' for="modalLabel">Profile Name</label>
+             <label className='form__label label' htmlFor="modalLabel">Profile Name</label>
              <input className='form__input input' type="text" id="modalInput"  value={profileName} onChange={e => setProfileName(e.target.value)}/>
              </div>
              

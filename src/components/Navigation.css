@@ -1,6 +1,8 @@
 .nav{
        border-bottom:  1px solid rgba(0, 0, 0, 0.5);
     padding: 25px 0;
+    background-color: white;
+    margin-bottom: 35px;
 
 }
 .nav__container{
@@ -44,3 +46,13 @@
     line-height: 16px; 
 }
 
+.MuiButton-root, .MuiButton-text#button {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+    color: #000000 !important;
+    padding: 0 10px
+}

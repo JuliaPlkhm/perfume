@@ -36,7 +36,7 @@ export  const SideBar = ({isOpen, setOpen, type }) => {
     const [firstName, setFirstName] = useState('')
     const [profile, setProfile] = useState('Profile')
     const [field1, setField1] = useState('')
-    const [field2, setField2] = useState('')
+    const [password, setPassword] = useState('')
     const [userName, setUserName] = useState('')
 
     const deleteState=()=>{
@@ -44,7 +44,7 @@ export  const SideBar = ({isOpen, setOpen, type }) => {
       setFirstName()
       setProfile('Profile')
       setField1()
-      setField2()
+      setPassword()
       setUserName()
     }
 
@@ -53,8 +53,8 @@ export  const SideBar = ({isOpen, setOpen, type }) => {
         const user ={
           firstName: firstName,
           lastName: lastName,
-          userName: firstName,
-          password: firstName,
+          userName: userName,
+          password: password,
           roleName: profile
         }
         dispatch(postUser(user))
@@ -63,7 +63,7 @@ export  const SideBar = ({isOpen, setOpen, type }) => {
           firstName: firstName,
           lastName: lastName,
           userName: userName,
-          password: firstName,
+          password: password,
         }
         dispatch(postAdminUser(admin))
       }
@@ -94,17 +94,17 @@ export  const SideBar = ({isOpen, setOpen, type }) => {
           <img className='closeButton' onClick={handleClose} src={icon} />
 
           <div className=' sideBar__group form__group'>
-            <label className='form__label label' for="lastName">Last Name</label>
+            <label className='form__label label' htmlFor="lastName">Last Name</label>
             <input className='form__input input' type="text" id="lastName" value={lastName} onChange={e => setLastName(e.target.value)} />
           </div>
 
           <div className=' sideBar__group form__group'>
-            <label className='form__label label' for="firstName">Last Name</label>
+            <label className='form__label label' htmlFor="firstName">Last Name</label>
             <input className='sideBar__input form__input input' type="text" id="firstName" value={firstName} onChange={e => setFirstName(e.target.value)} />
           </div>
 
         {type === 'Users' &&  (<div className='sideBar__group form__group'>
-            <label className='form__label label' for="profile">Profile</label>
+            <label className='form__label label' htmlFor="profile">Profile</label>
             <Select
               value={profile}
               className='sideBar__input form__input input'
@@ -113,23 +113,23 @@ export  const SideBar = ({isOpen, setOpen, type }) => {
               input={<BootstrapInput />}
               onChange={e => setProfile(e.target.value)}
             >
-              {rolesForUsers?.map((el) => <MenuItem sx={{ fontSize: '14px' }} value={el.label}>{el.label}</MenuItem>)}
+              {rolesForUsers?.map((el) => <MenuItem sx={{ fontSize: '14px' }} key ={el.label} value={el.label}>{el.label}</MenuItem>)}
 
             </Select>
           </div>)}
 
           <div className='sideBar__group form__group'>
-            <label className='form__label label' for="field1">User Name</label>
+            <label className='form__label label' htmlFor="field1">User Name</label>
             <input className='sideBar__input form__input input' type="text" id="field1" value={userName} onChange={e => setUserName(e.target.value)} />
           </div>
 
           <div className='sideBar__group form__group'>
-            <label className='form__label label' for="field2">Field 1</label>
-            <input className='sideBar__input form__input input' type="text" id="field2" value={field1} onChange={e => setField1(e.target.value)} />
+            <label className='form__label label' htmlFor="field2">Password</label>
+            <input className='sideBar__input form__input input' type="text" id="field2" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
           <div className='sideBar__group form__group'>
-            <label className='form__label label' for="field1">Field 2</label>
-            <input className='sideBar__input form__input input' type="text" id="field3" value={field2} onChange={e => setField2(e.target.value)} />
+            <label className='form__label label' htmlFor="field1">Field 1</label>
+            <input className='sideBar__input form__input input' type="text" id="field3" value={field1} onChange={e => setField1(e.target.value)} />
           </div>
           <div className='sideBar__buttons'>
             <button className='form__button button' onClick={handelClick}>Save</button>

@@ -85,13 +85,14 @@ export function TableNew(props) {
    }
  }
 
- const handleCellEditCommit = (e)=>{
+ const handleCellEditCommit =(e)=>{
+  //  debugger
    const editData={
-    id: e.row.id,
-    firstName: e.row.firstName,
-    lastName: e.row.lastName,
-    userName: e.row.userName,
-    roleName:  e.row.profile
+    id: e.id,
+    // firstName: e.row.firstName,
+    // lastName: e.row.lastName,
+    // userName: e.row.userName,
+    // roleName:  e.row.profile
   }
 
   props.type === 'users' ? dispatch(changeUser({...editData, [e.field]: e.value})) 
@@ -103,7 +104,7 @@ export function TableNew(props) {
     <div style={{ display: 'flex',  }}>
        <StyledDataGrid
        autoHeight
-       headerHeight='76'
+       headerHeight={76}
        onCellEditCommit={handleCellEditCommit}
         columns={props.columns}
         rows={props.row}

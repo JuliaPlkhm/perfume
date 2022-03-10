@@ -4,6 +4,8 @@ import users from "./users";
 import roles from "./roles";
 import rolesForUsers from "./rolesForUsers"
 import admin from "./admin";
+import error from "./error";
+
 
 
 
@@ -13,5 +15,7 @@ export default combineReducers({
     user,
     users,
     roles,
-    rolesForUsers
+    error,
+    rolesForUsers,
+    
   });

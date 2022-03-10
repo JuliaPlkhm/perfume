@@ -1,14 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import icon from '../../assets/del.png'
 
-// import { deleteRow } from "./getColumnsUser";
-
 
 export function nameColumn(params, handleDelete){
   return(
     <>
       <p>{params.row.name}</p>
-      <div onClick={handleDelete(params.row.id)} className="profile__gridIcon"> 
+      <div onClick={handleDelete()} className="profile__gridIcon"> 
         <img src={icon} />
 
       </div>
@@ -18,32 +16,24 @@ export function nameColumn(params, handleDelete){
 
 
 function CheckBox({ params }) {
-
   const { id, api, field, row } = params;
-  console.log(params)
-
   const [value, setValue] = useState('Denied');
 
   useEffect(() => {
-
     row.permissions.map((el) => {
       if (el.id === field) {
         return setValue((value) => 'Accessible');
       }
     })
-
   }, [])
 
-
   const handleChange = (event) => {
-    console.log(event.target.checked)
     if (event.target.checked) {
       setValue((value) => 'Accessible');
-
     } else {
       setValue((value) => 'Denied');
-
     }
+
     api.setCellMode(id, field, 'edit');
     api.setEditCellValue({ id, field, value: event.target.checked });
     api.commitCellChange({ row, id, field })
@@ -52,7 +42,7 @@ function CheckBox({ params }) {
   return (
     <div className='profile__checkboxGroup'>
       <input id={`P_${params.colDef.field}_${params.id}`} onChange={handleChange} type="checkbox" className='profile__checkbox' checked={value === 'Accessible'} />
-      <label for={`P_${params.colDef.field}_${params.id}`} className='checkboxGroup__label' >{value}</label>
+      <label htmlFor={`P_${params.colDef.field}_${params.id}`} className='checkboxGroup__label' >{value}</label>
     </div>
   )
 }
@@ -78,17 +68,5 @@ export default function getColumns(page, handleDelete) {
       }
     )
   })
-  // columns.push(
-  //   {
-  //     field: "delete",
-  //     headerName: "",
-  //     sortable: false,
-  //     align: 'center',
-  //     minWidth: 180,
-  //     renderCell: (params) => deleteRow(params),
-
-  //   }
-  // )
-
   return columns
 }

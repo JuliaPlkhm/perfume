@@ -17,12 +17,12 @@ export  const Login = () => {
          <div className='login__form form'>
              <h1 className='form__header'>Login</h1>
              <div className='form__group'>
-             <label className='form__label' for="username">User Name</label>
+             <label className='form__label' htmlFor="username">User Name</label>
              <input className='form__input' type="text" id="username"  value={username} onChange={e => setUsername(e.target.value)}/>
              </div>
              <div className='form__group'>
 
-             <label className='form__label' for="password">Password</label>
+             <label className='form__label' htmlFor="password">Password</label>
              <input className='form__input' type="password" id="password"  value={password} onChange={e => setPassword(e.target.value)}/>
              </div>
 

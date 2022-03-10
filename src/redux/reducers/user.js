@@ -1,13 +1,13 @@
 import { SET_USER, SET_LOGIN } from "../types/index"
 const initialState = {
     user: null,
-    loggedIn: false,
+    loggedIn: 'unknown',
   };
   
   const loginReducer = (state = initialState, { type, payload }) => {
     switch (type) {
       case SET_LOGIN:
-        return { ...state, loggedIn: true };
+        return { ...state, loggedIn: payload};
          
         case SET_USER:
 
