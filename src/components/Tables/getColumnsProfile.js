@@ -6,7 +6,7 @@ export function nameColumn(params, handleDelete){
   return(
     <>
       <p>{params.row.name}</p>
-      <div onClick={handleDelete()} className="profile__gridIcon"> 
+      <div onClick={handleDelete(params.row.id)} className="profile__gridIcon"> 
         <img src={icon} />
 
       </div>

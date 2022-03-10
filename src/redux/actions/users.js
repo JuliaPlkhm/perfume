@@ -28,7 +28,7 @@ export const postUser = (user) => {
 export const deleteUser = (id) => {
 
   return (dispatch) => {
-    axios.delete(`https://localhost:5001/users/${id}`, id, {withCredentials: true}).then((res) => {
+    axios.delete(`https://localhost:5001/users/${id}`, {withCredentials: true}).then((res) => {
       dispatch(getUsers());
     }).catch(err=>dispatch(setError(err.response.data)));
   };

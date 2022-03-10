@@ -36,7 +36,7 @@ export const postAdminUser = (user) => {
 export const deleteAdminUser = (id) => {
 
   return (dispatch) => {
-    axios.delete(`https://localhost:5001/Admin/${id}`, id, {withCredentials: true}).then((res) => {
+    axios.delete(`https://localhost:5001/Admin/${id}`, {withCredentials: true}).then((res) => {
       dispatch(getAdminUsers());
     }).catch(err=>dispatch(setError(err.response.data)));
   };
