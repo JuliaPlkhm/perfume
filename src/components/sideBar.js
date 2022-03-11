@@ -38,6 +38,7 @@ const initialValues={
   lastName: '',
   userName: '',
   password: '',
+  confirmPassword: '',
   profile: '',
   field1: ''
 }
@@ -65,7 +66,10 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
       .string('Enter your Password')
       .min(3, 'Password should be of minimum 3 characters length')
       .required('Password is required'),
-
+      confirmPassword: yup
+      .string('Enter your Password').
+      oneOf([yup.ref('password')], 'Invalid password')
+      .required('Confirm Password is required'),
   });
 
 
@@ -161,7 +165,7 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
                     input={<BootstrapInput />}
                     onChange={handleChange}
                   >
-                    {rolesForUsers?.map((el) => <MenuItem sx={{ fontSize: '14px' }} key={el.label} value={el.label}>{el.label}</MenuItem>)}
+                    {rolesForUsers?.map((el) => el.label !== 'Admin' &&  <MenuItem sx={{ fontSize: '14px' }} key={el.label} value={el.label}>{el.label}</MenuItem>)}
 
                   </Select>
                   {errors.profile && touched.profile && <span className="error">{errors.profile}</span>}
@@ -175,14 +179,20 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
 
                 <div className='sideBar__group form__group'>
                   <label className='form__label label' htmlFor="password">Password</label>
-                  <Field className='form__input input' type="text" id="password" name="password" />
+                  <Field className='form__input input' type="password" id="password" name="password" autocomplete='new-password'/>
                   {errors.password && touched.password && <span className="error">{errors.password}</span>}
                 </div>
 
                 <div className='sideBar__group form__group'>
+                  <label className='form__label label' htmlFor="confirmPassword">Confirm Password</label>
+                  <Field className='form__input input' type="password" id="confirmPassword" name="confirmPassword" autocomplete='newPassword'/>
+                  {errors.confirmPassword && touched.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+                </div>
+
+                <div className='sideBar__group form__group'>
                   <label className='form__label label' htmlFor="field1">Field 1</label>
-                  <Field className='form__input input' type="text" id="field1" name="field1" />
-                  {errors.field1 && touched.field1 && <span className="error">{errors.field1}</span>}
+                  <Field className='form__input input' type="text" id="field1" name="field1"  />
+                  {errors.field1 && touched.field1 && <span className="error" >{errors.field1}</span>}
                 </div>
                 {error && <span className="error sideBar__error">{error}</span>}
                

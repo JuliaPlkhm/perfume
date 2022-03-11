@@ -33,7 +33,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
       '& .MuiDataGrid-columnHeaderTitleContainer': {
         padding: "0px 0px",
       },
-      '& .MuiDataGrid-columnHeader:focus, .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within, .MuiDataGrid-cell.MuiDataGrid-cell--editing:focus-within': {
+      '& .MuiDataGrid-columnHeader:focus, .MuiDataGrid-cell:focus, .MuiDataGrid-cell:focus-within, .MuiDataGrid-columnHeader:focus-within, .MuiDataGrid-cell.MuiDataGrid-cell--editing:focus-within': {
         outline: 'none',
       },
     
@@ -53,6 +53,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
         fontSize: '14px',
         lineHeight: '16px',
         borderBottom: '0px #F5F5F5',
+        marginRight: '5px'
       },
      
     '&  .MuiDataGrid-cell,  .MuiDataGrid-columnHeader': {

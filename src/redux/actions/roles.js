@@ -47,6 +47,8 @@ export const postRole = (role) => {
   return (dispatch) => {
     axios.post(`https://localhost:5001/Roles/`, role, {withCredentials: true}).then((res) => {
       dispatch(getRoles());
+      dispatch(setError(null))
+
     }).catch(err=>dispatch(setError(err.response.data)));
   };
 };

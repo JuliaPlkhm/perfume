@@ -42,7 +42,7 @@ const AutocompleteCell =(props)=>{
       sx={{fontSize: '14px'}}
       input={<BootstrapInput />}
     >
-      {props.option.map((el)=> <MenuItem sx={{fontSize: '14px'}} key ={el.label} value={el.label}>{el.label}</MenuItem>)}
+      {props.option.map((el)=> el.label !== 'Admin' && <MenuItem sx={{fontSize: '14px'}} key ={el.label} value={el.label}>{el.label}</MenuItem>)}
       
     </Select>
     );
@@ -59,9 +59,9 @@ export function deleteRow (params){
 
  export default function getColumns(option ) {
     const columns = [
-      { field: "lastName", headerName: "Last Name",  editable: true, flex: 1, sortable: false,},
+      { field: "userName", headerName: "User Name",  editable: true, flex: 1},
       { field: "firstName", headerName: "First Name",  editable: true, flex: 1, sortable: false,},
-      { field: "userName", headerName: "User Name", sortable: false, editable: true, flex: 1},
+      { field: "lastName", headerName: "Last Name",  editable: true, flex: 1, sortable: false,},
 
       {
         field: "roleName",

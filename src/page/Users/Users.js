@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { Nav } from '../../components/Navigation';
 import { Header } from '../../components/PageHeaders';
 import { TableNew } from '../../components/Tables/Table';
 import { getUsers } from '../../redux/actions/users';
@@ -63,7 +62,6 @@ export  const Users = () => {
 
   return (
      <div className='wrapper users'>
-       <Nav/>
          <div className='container'>
          <Header name={'Users'} button={'Add New'}/>
          {users && option && <TableNew  row={row} columns = {columns} option={rolesForUsers} type='users'></TableNew >}

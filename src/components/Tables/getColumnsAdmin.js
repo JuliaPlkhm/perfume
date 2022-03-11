@@ -3,9 +3,10 @@
  export default function getColumns() {
   //  debugger
     const columns = [
-      { field: "lastName", headerName: "Last Name",  editable: true, flex: 1, sortable: false,},
+     
+      { field: "userName", headerName: "User Name", editable: true, flex: 1},
       { field: "firstName", headerName: "First Name",  editable: true, flex: 1, sortable: false,},
-      { field: "userName", headerName: "User Name", sortable: false, editable: true, flex: 1},
+      { field: "lastName", headerName: "Last Name",  editable: true, flex: 1, sortable: false,},
       { field: "password", headerName: "Password", sortable: false, editable: true, flex: 1},
       { field: "field1", headerName: "Field 1", sortable: false, editable: true, flex: 1},
       {

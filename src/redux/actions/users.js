@@ -21,6 +21,7 @@ export const postUser = (user) => {
   return (dispatch) => {
     axios.post(`https://localhost:5001/users/`, user, {withCredentials: true}).then((res) => {
       dispatch(addUser(res.data));
+      dispatch(setError(null))
     }).catch(err=>dispatch(setError(err.response.data)));
   };
 };

@@ -6,7 +6,6 @@ import { getPages } from '../../redux/actions/roles';
 import getColumns from '../../components/Tables/getColumnsProfile'
 import { deleteRole } from "../../redux/actions/roles";
 import { getRoles } from "../../redux/actions/roles";
-import { Nav } from '../../components/Navigation';
 
 
 
@@ -36,7 +35,6 @@ useEffect(()=>{
 
   return (
      <div className='wrapper users'>
-       <Nav/>
 
          <div className='container'>
          <Header name={'Profiles'} button={'Add New Profile'}/>

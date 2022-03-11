@@ -153,6 +153,12 @@ export function DataGridNew(props) {
         onCellEditCommit={handleCellEditCommit}
         scrollbarSize={2}
         disableSelectionOnClick
+        sx={{ height: `${(props.row?.length + 1) * (ROW_HEIGHT + ROW_MARGIN)}px !important`,
+        //   "& .MuiDataGrid-renderingZone": {
+        //   maxHeight: `${(props.row.length + 1) * (ROW_HEIGHT + ROW_MARGIN)}px !important`,
+  
+        // }
+      }}
       />
   );
 }

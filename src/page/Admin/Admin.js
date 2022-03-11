@@ -4,7 +4,6 @@ import { Header } from '../../components/PageHeaders';
 import { TableNew } from '../../components/Tables/Table';
 import { getAdminUsers } from '../../redux/actions/adminUsers';
 import getColumns from '../../components/Tables/getColumnsAdmin'
-import { Nav } from '../../components/Navigation';
 
 
 export  const Admin = () => {
@@ -39,7 +38,6 @@ export  const Admin = () => {
  
   return (
      <div className='wrapper users'>
-       <Nav/>
 
          <div className='container'>
          <Header name={'Admin Users'} button={'Add New'}/>
