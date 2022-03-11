@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
-import {  useDispatch } from "react-redux";
+import React from 'react';
+import {  useDispatch, useSelector } from "react-redux";
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
 
+import { setError } from '../redux/actions/error';
 import { postRole } from '../redux/actions/roles';
 import icon from '../assets/close.png'
 
@@ -20,13 +21,13 @@ const validationSchema = yup.object({
 
 export const ModalBlock = ({ isOpen, setOpen }) => {
   const dispatch = useDispatch();
-
-  const handelClick = () => {
-    setOpen(false);
-  }
+  const { error } = useSelector((state) => state.error);
+ 
 
   const handleClose = () => {
     setOpen(false);
+    dispatch(setError(null))
+
   }
 
   return (
@@ -63,9 +64,11 @@ export const ModalBlock = ({ isOpen, setOpen }) => {
                   {errors.profile && touched.profile && (
                     <span className="error">{errors.profile}</span>
                   )}
+                {error && <div className="error">{error}</div>}    
+
                 </div>
 
-                <button className='form__button button' type="submit" onClick={errors.profile ? null : handleClose }>Save</button>
+                <button className='form__button button' type="submit" >Save</button>
                 <button className='form__button button' onClick={handleClose}>Cansel</button>
               </Form>
             )}

@@ -46,7 +46,10 @@ export const changeAdminUser = (user) => {
   return (dispatch) => {
     axios.put(`https://localhost:5001/Admin/`, user, {withCredentials: true}).then((res) => {
       dispatch(getAdminUsers());
-    }).catch(err=>dispatch(setError(err.response.data)));
+    }).catch(err=>{
+      dispatch(setError(err.response.data))
+      dispatch(getAdminUsers());}
+      );
   };
 };
 

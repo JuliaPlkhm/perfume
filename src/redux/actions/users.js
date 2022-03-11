@@ -38,7 +38,11 @@ export const changeUser = (user) => {
   return (dispatch) => {
     axios.put(`https://localhost:5001/users/`, user, {withCredentials: true}).then((res) => {
       dispatch(getUsers());
-    }).catch(err=>dispatch(setError(err.response.data)));
+    }).catch(err=>{
+      dispatch(setError(err.response.data))
+      dispatch(getUsers());
+    
+    });
   };
 };
 
@@ -47,6 +51,6 @@ export const getUsers = () => {
   return (dispatch) => {
     axios.get(`https://localhost:5001/users/`, {withCredentials: true}).then((res) => {
       dispatch(setUsers(res.data));
-    }).catch(err=>dispatch(setError(err)));
+    }).catch(err=>dispatch(setError(err.response.data)));
   };
 };

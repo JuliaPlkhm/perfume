@@ -60,3 +60,8 @@ div.loginWrapper{
     font-family: Roboto;
     font-size: 11px;
 }
+.error_server{
+    position:static;
+    margin-bottom: 10px;
+    transform: none;
+}

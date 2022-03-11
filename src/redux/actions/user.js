@@ -23,12 +23,11 @@ export const setUser = (user) => {
 export const setLogin = (user) => {
   return (dispatch) => {
     axios.post(`https://localhost:5001/Auth/login`, user, {withCredentials: true}).then((res) => {
-      
-
       dispatch(setUser(res.data));
       dispatch(setLogged(true))
+      dispatch(setError(null))
            
-           }).catch(err=>dispatch(setError(err.response)));
+           }).catch(err=>dispatch(setError(err.response.data)));
         };
  
 };

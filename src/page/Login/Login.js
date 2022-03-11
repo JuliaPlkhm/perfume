@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import './Login.css';
 import { Logo } from '../../components/Logo';
 import { setLogin } from '../../redux/actions';
+import { setError } from '../../redux/actions/error';
+
 import { Formik, Field, Form } from 'formik';
 
 import * as yup from 'yup';
@@ -21,7 +23,7 @@ const validationSchema = yup.object({
 
 export  const Login = () => {
     const dispatch = useDispatch();
-  
+    const { error } = useSelector((state) => state.error);
 
     return (
         <div className='loginWrapper wrapper '>
@@ -62,6 +64,8 @@ export  const Login = () => {
                                 <span className="error">{errors.password}</span>
                             )}
                         </div>
+                             {error && <div className="error error_server">{error}</div>}    
+    
                         <button type="submit" className='form__button button' >Login</button>
                     </Form>
                 )}

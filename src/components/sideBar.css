@@ -1,5 +1,5 @@
 .sideBar{
-    height: 100vh;
+    min-height: 100vh;
     position: absolute;
     right: 0;
     top: 0;
@@ -19,9 +19,17 @@ div.sideBar__group{
     margin-bottom: 28px;
 
 }
+form{
+    margin-bottom: 60px;
+
+}
+.sideBar__group:last-of-type{
+    margin-bottom: 50px;
+
+}
 .sideBar__buttons{
     width: 100%;
-    padding: 25px 39px 38px ;
+    padding: 25px 39px 25px ;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -31,4 +39,9 @@ div.sideBar__group{
 .MuiBackdrop-root{
     background: none !important;
 
+}
+span.sideBar__error{
+    position: relative;
+    transform: none;
+    bottom: 0;
 }
