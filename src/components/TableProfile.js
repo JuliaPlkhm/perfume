@@ -104,7 +104,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 
  
 
-export function DataGridNew(props) {
+export function TableProfile(props) {
 
   const dispatch = useDispatch();
 
@@ -143,7 +143,14 @@ export function DataGridNew(props) {
 
       <StyledDataGrid
         rows={props.row}
-        columns={props.columns}
+        columns={ {
+          field: el.id,
+          headerName: el.name,
+          sortable: false,
+          filterable: false,
+       
+          
+        }}
         rowHeight={84}
        headerHeight={76}
         // disableColumnFilter

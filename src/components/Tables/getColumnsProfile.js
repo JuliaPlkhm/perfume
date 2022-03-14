@@ -55,13 +55,14 @@ function header(params) {
 
 
 export default function getColumns(page, handleDelete) {
-  const columns = [{ field: "name", minWidth: 180, headerName: "", editable: true, sortable: false, align: 'center', renderCell: (params) => nameColumn(params, handleDelete), }]
+  const columns = [{ field: "name", minWidth: 180, headerName: "", editable: true, sortable: false, align: 'center', hideable: false,  renderCell: (params) => nameColumn(params, handleDelete), }]
   page?.map((el) => {
     columns.push(
       {
         field: el.id,
         headerName: el.name,
         sortable: false,
+        filterable: false,
         minWidth: 180,
         renderCell: (params) => <CheckBox params={params} />,
         renderHeader: (params) => header(params)

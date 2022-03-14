@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './PageHeaders.css'
 import { ModalBlock } from './Modal';
 import { SideBar } from './sideBar';
-import { useSelector, useDispatch } from "react-redux";
 
 
 
