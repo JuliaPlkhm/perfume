@@ -77,6 +77,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 
 
 export function TableNew(props) {
+  // debugger
   const dispatch = useDispatch();
 
  const handleOnCellClick =(params)=>{

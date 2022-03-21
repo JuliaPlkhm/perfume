@@ -1,0 +1,130 @@
+div.profile{
+    max-width: 300px;
+    width: 100%;
+    margin-right: 35px;
+    
+}
+div.permissions{
+    max-width: 937px;
+    width: 100%;
+}
+
+.profile__header{
+    text-align: start;
+    margin-bottom: 20px;
+}
+.profileList__header{
+    padding: 20px 34px 26px ;
+    background: #F5F5F5;
+    border-bottom:  1px solid #7B7B7B;
+    text-align: start;
+
+}
+ul.profileList__list{
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+div.MuiListItemButton-root{
+    border-left: 6px solid transparent ;
+    padding: 20px 29px 17px ;
+    transition: all 0.6s ease-out;
+ 
+}
+span.MuiListItemText-primary, .profileList__item input{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+div.profileList__item.Mui-selected, div.profileList__item.Mui-selected:hover{
+    background-color: #F5F5F5;
+    border-left: 6px solid #C4C4C4 ;
+
+}
+.Mui-selected span.MuiListItemText-primary{
+    font-weight: 700;
+
+}
+.profileList__item img{
+    opacity: 0;
+}
+.profileList__item.Mui-selected img,  .profileList__item:hover img{
+    opacity: 0.5;
+}
+.profileList__item input:focus-visible{
+    outline: 0;
+    border: 0;
+ background-color: transparent;
+    padding: 3px 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+.profileList, .permissions__transferList{
+    background: #FFFFFF;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 2px; 
+}
+.profileList{
+    height: 414px;
+}
+.profileList__button{
+    padding: 6px 50px 6px 14px ;
+}
+
+.permissions__transferList{
+padding: 35px 50px 45px;
+flex-wrap: nowrap !important;
+}
+.transferList__item{
+    max-width: 390px;
+    width: 100%;
+    overflow: hidden;
+    
+}
+div.permissions__list{
+    height: 286px;
+    background: #F5F5F5;
+    border-radius: 2px;
+    padding: 5px 22px;
+}
+div.transferList__buttons{
+    margin: 4px 20px;
+    align-items: center;
+    width: auto;
+    height: 100%;
+    transform: translateY(25px);
+}
+.permissions__header{
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 28px;
+    text-align: start;
+}
+button.permissions__button{
+    min-width: 33px;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: #DDDDDD;
+    border: 1px solid #DDDDDD;
+}
+button.permissions__button:hover{
+    background-color: #dddddd85;
+    border: 1px solid #dddddd85;
+}
+div.list__item{
+    border-bottom: 1px solid #C4C4C4;
+    border-left: 0
+}
+div.list__item.Mui-selected, div.list__item.Mui-selected:hover{
+    border-left:0;
+    background: rgba(196, 196, 196, 0.5)
+}
+.permission__scroll, .profileList__scroll{
+    background: transparent !important;
+    right: -8px !important;
+}
+ .profileList__scroll{
+    right: 0px !important;
+}
