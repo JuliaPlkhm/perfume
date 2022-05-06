@@ -19,7 +19,7 @@ div.sideBar__group{
     margin-bottom: 28px;
 
 }
-form{
+.sideBar form{
     margin-bottom: 60px;
 
 }
@@ -36,12 +36,18 @@ form{
     background: rgba(196, 196, 196, 0.5);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.MuiBackdrop-root{
-    background: none !important;
+.MuiModal-root{
+    /* background: none !important; */
+    overflow-y: scroll;
 
 }
 span.sideBar__error{
     position: relative;
     transform: none;
     bottom: 0;
+}
+.form__label-required::after{
+    content: '*';
+    position: relative;
+    left: 5px;
 }

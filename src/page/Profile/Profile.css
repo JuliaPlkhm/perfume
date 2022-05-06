@@ -4,6 +4,9 @@ div.profile{
     margin-right: 35px;
     
 }
+div.profile__container{
+    flex-wrap: nowrap;
+}
 div.permissions{
     max-width: 937px;
     width: 100%;

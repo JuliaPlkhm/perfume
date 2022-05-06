@@ -1,48 +1,18 @@
-div.profile{
-    margin-right: 35px;
-}
-
-div.profile__container{
-flex-wrap: nowrap;
-}
-.profile__header{
-    text-align: start;
-    margin-bottom: 20px;
-}
-.profileList__header{
-    padding: 20px 34px 26px ;
-    background: #F5F5F5;
-    border-bottom:  1px solid #7B7B7B;
-    text-align: start;
-
-}
-div.MuiListItemButton-root{
-    border-left: 6px solid transparent ;
-    padding: 20px 29px 17px ;
-    transition: all 0.6s ease-out;
- 
-}
-span.MuiListItemText-primary{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-}
-div.MuiListItemButton-root.Mui-selected, div.MuiListItemButton-root.Mui-selected:hover{
-    background-color: #F5F5F5;
-    border-left: 6px solid #C4C4C4 ;
-
-}
-div.MuiListItemButton-root.Mui-selected span.MuiListItemText-primary{
-    font-weight: 700;
-
-}
-.profileList{
+.gridHeader{
+    padding: 8px;
+    min-width: 144px;
     background: #FFFFFF;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 2px; 
+    border: 1px solid #808080;
+    border-radius: 30px;
+    font-weight: bold;
+    line-height: 16px;
 }
-.profileList__button{
-    padding: 6px 50px 6px 14px ;
+.gridIcon{
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+.profile__gridIcon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

@@ -1,6 +1,10 @@
-import axios from "axios";
 import * as types from "../types";
 import { setError } from "./error";
+
+import { postAPI } from "../../api/api";
+import { getAPI } from "../../api/api";
+import { deleteAPI } from "../../api/api";
+import { putAPI } from "../../api/api";
 
 export const setAdminUsers = (user) => {
   return {
@@ -18,7 +22,7 @@ export const addAdminUser = (user) => {
 
 export const getAdminUsers = () => {
   return (dispatch) => {
-    axios.get(`https://localhost:5001/Admin/`, {withCredentials: true}).then((res) => {
+   getAPI(`/Admin/`).then((res) => {
       dispatch(setAdminUsers(res.data));
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -27,7 +31,7 @@ export const getAdminUsers = () => {
 export const postAdminUser = (user) => {
 
   return (dispatch) => {
-    axios.post(`https://localhost:5001/Admin/`, user, {withCredentials: true}).then((res) => {
+    postAPI(`/Admin/`, user).then((res) => {
       dispatch(addAdminUser(res.data));
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -36,7 +40,7 @@ export const postAdminUser = (user) => {
 export const deleteAdminUser = (id) => {
 
   return (dispatch) => {
-    axios.delete(`https://localhost:5001/Admin/${id}`, {withCredentials: true}).then((res) => {
+    deleteAPI(`/Admin/${id}`).then((res) => {
       dispatch(getAdminUsers());
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -44,7 +48,7 @@ export const deleteAdminUser = (id) => {
 export const changeAdminUser = (user) => {
 
   return (dispatch) => {
-    axios.put(`https://localhost:5001/Admin/`, user, {withCredentials: true}).then((res) => {
+    putAPI(`/Admin/`, user).then((res) => {
       dispatch(getAdminUsers());
     }).catch(err=>{
       dispatch(setError(err.response.data))

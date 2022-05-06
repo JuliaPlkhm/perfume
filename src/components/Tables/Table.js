@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from '@mui/material/styles';
 import {  useDispatch } from "react-redux";
@@ -6,7 +6,7 @@ import { deleteUser} from '../../redux/actions/users';
 import { changeUser } from '../../redux/actions/users';
 import { deleteAdminUser } from '../../redux/actions/adminUsers'
 import { changeAdminUser } from '../../redux/actions/adminUsers'
-
+import './Table.css';
 
 
 
@@ -76,9 +76,9 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
   }));
 
 
-export function TableNew(props) {
-  // debugger
+export function Table(props) {
   const dispatch = useDispatch();
+
 
  const handleOnCellClick =(params)=>{
    if(params.field ==='delete'){
@@ -88,24 +88,16 @@ export function TableNew(props) {
  }
 
  const handleCellEditCommit =(e)=>{
-  //  debugger
-   const editData={
-    id: e.id,
-    // firstName: e.row.firstName,
-    // lastName: e.row.lastName,
-    // userName: e.row.userName,
-    // roleName:  e.row.profile
-  }
-
-  props.type === 'users' ? dispatch(changeUser({...editData, [e.field]: e.value})) 
-  : dispatch(changeAdminUser({...editData, [e.field]: e.value})) 
+  props.type === 'users' ? dispatch(changeUser({id: e.id, [e.field]: e.value})) 
+  : dispatch(changeAdminUser({id: e.id, [e.field]: e.value})) 
  }
  
 
   return (
-    <div style={{ display: 'flex',  }}>
+    <div style={{ display: 'flex',  }} className ={props.type === 'popUp' ? 'popUpProfile__table' : "table"} >
        <StyledDataGrid
-       autoHeight
+       
+       autoHeight={props.type !== 'popUp' ? true : false}
        headerHeight={76}
        onCellEditCommit={handleCellEditCommit}
         columns={props.columns}
@@ -115,6 +107,12 @@ export function TableNew(props) {
         disableColumnMenu
         hideFooter
         disableSelectionOnClick
+        checkboxSelection={props.type === 'popUp' ? true : false}
+        onSelectionModelChange={(newSelectionModel) => {
+          props.setSelect(newSelectionModel)
+          console.log(newSelectionModel)
+        }}
+        selectionModel={props.select}
       />
     </div>
 

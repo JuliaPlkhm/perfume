@@ -1,6 +1,11 @@
-import axios from "axios";
 import * as types from "../types";
 import { setError } from "./error";
+
+import { postAPI } from "../../api/api";
+import { getAPI } from "../../api/api";
+import { deleteAPI } from "../../api/api";
+import { putAPI } from "../../api/api";
+
 
 export const setUsers = (user) => {
   return {
@@ -19,7 +24,7 @@ export const addUser = (user) => {
 export const postUser = (user) => {
 
   return (dispatch) => {
-    axios.post(`https://localhost:5001/users/`, user, {withCredentials: true}).then((res) => {
+    postAPI('/users', user).then((res) => {
       dispatch(addUser(res.data));
       dispatch(setError(null))
     }).catch(err=>dispatch(setError(err.response.data)));
@@ -29,15 +34,14 @@ export const postUser = (user) => {
 export const deleteUser = (id) => {
 
   return (dispatch) => {
-    axios.delete(`https://localhost:5001/users/${id}`, {withCredentials: true}).then((res) => {
+    deleteAPI(`/users/${id}`).then((res) => {
       dispatch(getUsers());
     }).catch(err=>dispatch(setError(err.response.data)));
   };
 };
 export const changeUser = (user) => {
-
   return (dispatch) => {
-    axios.put(`https://localhost:5001/users/`, user, {withCredentials: true}).then((res) => {
+    putAPI(`users/`, user).then((res) => {
       dispatch(getUsers());
     }).catch(err=>{
       dispatch(setError(err.response.data))
@@ -50,7 +54,7 @@ export const changeUser = (user) => {
 
 export const getUsers = () => {
   return (dispatch) => {
-    axios.get(`https://localhost:5001/users/`, {withCredentials: true}).then((res) => {
+    getAPI(`/users/`).then((res) => {
       dispatch(setUsers(res.data));
     }).catch(err=>dispatch(setError(err.response.data)));
   };

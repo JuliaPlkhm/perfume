@@ -5,10 +5,8 @@ import { Admin } from "../page/Admin/Admin";
 import {Profile} from '../page/Profile/Profile';
 import { Login } from '../page/Login/Login';
 import { Users } from "../page/Users/Users";
-import { Main } from '../page/mainPage';
 import PublicRoute from './PublicRoute'
 import ProtectedRoute from "./ProtectedRoute";
-import ProtectedRouteForUsers from "./ProtectedRouteForUsers";
 import { checkLogged } from "../redux/actions/user";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -44,7 +42,6 @@ export function Body() {
                     <Route path="/admin" element={<ProtectedRoute loggedIn={loggedIn} />}>
                         <Route path="" element={<Admin />} />
                     </Route>
-
 
                     <Route path="/" element={<PublicRoute loggedIn={loggedIn} />}>
                         <Route path="/login" element={<Login />} />

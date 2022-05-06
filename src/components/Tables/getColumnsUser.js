@@ -1,11 +1,11 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import { styled } from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import InputBase from '@mui/material/InputBase';
 import icon from '../../assets/del.png'
 
-
+import { PasswordCell } from "./PasswordCell";
 
 const BootstrapInput = styled(InputBase)({
     '& .MuiInputBase-input': {
@@ -24,9 +24,15 @@ const BootstrapInput = styled(InputBase)({
     },
   });
 
-const AutocompleteCell =(props)=>{
+
+  
+
+  const AutocompleteCell =(props)=>{
     const { id, api, field, row } = props.params;
     const [value, setValue] = useState(row.profile);
+    // useEffect(()=>{
+    //   setValue(row.profile)
+    // },[])
     const handleChange =(event, newValue)=>{
       setValue((value)=>newValue.props.children);
       api.setCellMode(id, field, 'edit');
@@ -36,18 +42,18 @@ const AutocompleteCell =(props)=>{
     }
     return (
       <Select
-      value={value}
+      defaultValue={row.profile}
+      value={value }
       onChange={ handleChange}
       displayEmpty
       sx={{fontSize: '14px'}}
       input={<BootstrapInput />}
     >
-      {props.option.map((el)=> el.label !== 'Admin' && <MenuItem sx={{fontSize: '14px'}} key ={el.label} value={el.label}>{el.label}</MenuItem>)}
+      {props.option?.map((el)=> <MenuItem sx={{fontSize: '14px'}} key ={el.label} value={el.label}>{el.label}</MenuItem>)}
       
     </Select>
     );
   }
-  
   
 export function deleteRow (params){
     return(
@@ -70,7 +76,14 @@ export function deleteRow (params){
         flex: 1,
         renderCell: (params) => <AutocompleteCell params={params} option={option}/>
       },
-      { field: "password", headerName: "Password", sortable: false, editable: true, flex: 1},
+   
+      {
+        field: "password",
+        headerName: "Password",
+        sortable: false,
+        flex: 1,
+        renderCell: (params) => <PasswordCell params={params}/>,
+      },
       { field: "field1", headerName: "Field 1", sortable: false, editable: true, flex: 1},
       {
         field: "delete",

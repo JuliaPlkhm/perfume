@@ -113,7 +113,7 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
   }
 
   return (
-    <Modal
+    <Modal className='modslSide'
       aria-labelledby="transition-modal-title"
       aria-describedby="transition-modal-description"
       open={isOpen}
@@ -126,7 +126,7 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
       }}
 
     >
-      <Fade in={isOpen}>
+      <Fade in={isOpen} sx={{backgroundColor: 'none'}}>
         <div className='sideBar modal'>
 
           <Formik
@@ -142,20 +142,20 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
                 <h1 className='sideBar__header form__header'>Add User</h1>
                 <img className='closeButton' onClick={handleClose} src={icon} />
                 <div className=' sideBar__group form__group'>
-                  <label className='form__label label' htmlFor="lastName">Last Name</label>
+                  <label className='form__label label form__label-required' htmlFor="lastName">Last Name</label>
                   <Field className='form__input input' type="text" id="lastName" name="lastName" />
                   {errors.lastName && touched.lastName && <span className="error">{errors.lastName}</span>}
                 </div>
 
                 <div className=' sideBar__group form__group'>
-                  <label className='form__label label' htmlFor="firstName">First Name</label>
+                  <label className='form__label label form__label-required' htmlFor="firstName">First Name</label>
                   <Field className='form__input input' type="text" id="firstName" name="firstName" />
                   {errors.firstName && touched.firstName && <span className="error">{errors.firstName}</span>}
 
                 </div>
 
                 {type === 'Users' && (<div className='sideBar__group form__group'>
-                  <label className='form__label label' htmlFor="profile">Profile</label>
+                  <label className='form__label label form__label-required' htmlFor="profile">Profile</label>
                   <Select
                     value={values.profile}
                     className='sideBar__input form__input input'
@@ -172,19 +172,19 @@ export const SideBar = ({ isOpen, setOpen, type }) => {
                 </div>)}
 
                 <div className='sideBar__group form__group'>
-                  <label className='form__label label' htmlFor="userName">User Name</label>
+                  <label className='form__label label form__label-required' htmlFor="userName">User Name</label>
                   <Field className='form__input input' type="text" id="userName" name="userName" />
                   {errors.userName && touched.userName && <span className="error">{errors.userName}</span>}
                 </div>
 
                 <div className='sideBar__group form__group'>
-                  <label className='form__label label' htmlFor="password">Password</label>
+                  <label className='form__label label form__label-required' htmlFor="password">Password</label>
                   <Field className='form__input input' type="password" id="password" name="password" autocomplete='new-password'/>
                   {errors.password && touched.password && <span className="error">{errors.password}</span>}
                 </div>
 
                 <div className='sideBar__group form__group'>
-                  <label className='form__label label' htmlFor="confirmPassword">Confirm Password</label>
+                  <label className='form__label label form__label-required' htmlFor="confirmPassword">Confirm Password</label>
                   <Field className='form__input input' type="password" id="confirmPassword" name="confirmPassword" autocomplete='newPassword'/>
                   {errors.confirmPassword && touched.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
                 </div>

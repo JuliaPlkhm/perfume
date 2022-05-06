@@ -2,13 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Grid from '@mui/material/Grid';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import arrow1 from '../assets/arrow1.png'
 import arrow2 from '../assets/arrow2.png'
 import arrow3 from '../assets/arrow3.png'

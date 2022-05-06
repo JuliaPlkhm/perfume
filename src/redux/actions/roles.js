@@ -2,6 +2,11 @@ import axios from "axios";
 import * as types from "../types";
 import { setError } from "./error";
 
+import { postAPI } from "../../api/api";
+import { getAPI } from "../../api/api";
+import { deleteAPI } from "../../api/api";
+import { putAPI } from "../../api/api";
+
 export const setRoles = (user) => {
   return {
     type: types.SET_ROLES,
@@ -19,7 +24,7 @@ export const setPages = (user) => {
 export const getRoles = (id) => {
   return (dispatch) => {
 
-    axios.get(`https://localhost:5001/Roles/`, {withCredentials: true}).then((res) => {
+   getAPI(`/Roles/`).then((res) => {
       dispatch(setRoles(res.data));
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -28,7 +33,7 @@ export const getRoles = (id) => {
 export const getPages = (id) => {
   return (dispatch) => {
 
-    axios.get(`https://localhost:5001/Roles/permissions`, {withCredentials: true}).then((res) => {
+    getAPI(`/Roles/permissions`).then((res) => {
       dispatch(setPages(res.data));
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -36,7 +41,7 @@ export const getPages = (id) => {
 export const deleteRole = (id) => {
 
   return (dispatch) => {
-    axios.delete(`https://localhost:5001/Roles/${id}`,  {withCredentials: true}).then((res) => {
+    deleteAPI(`/Roles/${id}`).then((res) => {
       dispatch(getRoles());
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -45,7 +50,7 @@ export const deleteRole = (id) => {
 export const postRole = (role) => {
 
   return (dispatch) => {
-    axios.post(`https://localhost:5001/Roles/`, role, {withCredentials: true}).then((res) => {
+    postAPI(`/Roles/`, role).then((res) => {
       dispatch(getRoles());
       dispatch(setError(null))
 
@@ -56,7 +61,7 @@ export const postRole = (role) => {
 export const changeRole = (role) => {
 
   return (dispatch) => {
-    axios.put(`https://localhost:5001/Roles/`, role, {withCredentials: true}).then((res) => {
+    putAPI(`/Roles/`, role).then((res) => {
       dispatch(getRoles());
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -65,7 +70,7 @@ export const changeRole = (role) => {
 export const postPage = (page) => {
 
   return (dispatch) => {
-    axios.post(`https://localhost:5001/Roles/permissions`, page, {withCredentials: true}).then((res) => {
+   postAPI(`/Roles/permissions`, page).then((res) => {
       dispatch(getRoles());
     }).catch(err=>dispatch(setError(err.response.data)));
   };
@@ -79,12 +84,3 @@ export const deletePage = (page) => {
     });
   };
 };
-
-// export const deletePage = (page) => {
-// debugger
-//   return (dispatch) => {
-//     axios.delete(`https://localhost:5001/Roles/permissions`, page, {withCredentials: true}).then((res) => {
-//       dispatch(getRoles());
-//     });
-//   };
-// };

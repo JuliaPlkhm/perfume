@@ -1,6 +1,7 @@
-import axios from "axios";
 import * as types from "../types/index";
-
+import { postAPI } from "../../api/api";
+import { getAPI } from "../../api/api";
+import { deleteAPI } from "../../api/api";
 import { setError } from "./error";
 
 export const setLogged = (isLogged) => {
@@ -22,7 +23,7 @@ export const setUser = (user) => {
 
 export const setLogin = (user) => {
   return (dispatch) => {
-    axios.post(`https://localhost:5001/Auth/login`, user, {withCredentials: true}).then((res) => {
+    postAPI(`/Auth/login`, user).then((res) => {
       dispatch(setUser(res.data));
       dispatch(setLogged(true))
       dispatch(setError(null))
@@ -34,7 +35,7 @@ export const setLogin = (user) => {
 
 export const logout = () => {
   return (dispatch) => {
-    axios.delete(`https://localhost:5001/Auth/login`, {withCredentials: true}).then((res) => {
+   deleteAPI(`/Auth/login`).then((res) => {
       dispatch(setUser(null));
       dispatch(setLogged(false))
           
@@ -44,7 +45,7 @@ export const logout = () => {
 };
 export const checkLogged = () => {
   return (dispatch) => {
-    axios.get(`https://localhost:5001/Auth/me`, {withCredentials: true}).then((res) => {
+  getAPI(`/Auth/me`).then((res) => {
             dispatch(setUser(res.data));
             dispatch(setLogged(true))
           
